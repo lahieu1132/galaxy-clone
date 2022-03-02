@@ -1,9 +1,11 @@
+   
 import React,{useState, useRef,useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faPlay, faPlus, faFilm, faCheck } from '@fortawesome/free-solid-svg-icons'
 import {Link, useNavigate, generatePath} from 'react-router-dom'
 import {useList} from '../contexts/ListsContext'
 import {useAuth} from '../contexts/AuthContext'
+import Slider from 'react-slick'
 
 function Row(props) {
     const [id, setId] = useState();
@@ -48,6 +50,13 @@ function Row(props) {
         setActive(!active)
     }
 
+    const settings = {
+        slidesToShow: 5,
+        infinite: false,
+        touchMove:false,
+        useCSS:false,
+        slidesToScroll:3
+    }
    
   return (
     <div className='row w-[100vw] py-[10px] px-[4%]' >
@@ -57,22 +66,22 @@ function Row(props) {
             <FontAwesomeIcon className='ml-4' icon={faAngleRight}/>
             </h2>
         }
-        <div className={`'row_posters py-6 flex snap-x' ` } >
+        <Slider {...settings} className='row_posters  flex ' >
             {
                 props.films?.map((film,i) => (
-                        <div  className='row_poster snap-center relative z-10 mb-12  mr-5 w-[410px] h-[230px] hover:bg-[linear-gradient(42deg, #111 0%, rgba(0,0,0,0) 57%)]' data-type={props.test}
+                        <div  className='row_poster relative top-10 z-10   mr-6 w-[410px] h-[230px] hover:bg-[linear-gradient(42deg, #111 0%, rgba(0,0,0,0) 57%)]' data-type={props.test}
                         ref={filmRef}
                         key={i}
                         >   
                         <Link to={`/watch/${film?.id}`}>
                         
                             <img src={film?.img} alt='' 
-                                className='row_poster-img block absolute w-full h-full z-1 rounded'
+                                className='row_poster-img block absolute w-[310px] h-[170px] z-1 rounded'
                                 onMouseEnter={()=>handleHover(i)}
                                 onMouseOut={()=>handleHover2(i)}
                             />
                         </Link>
-                            <div className='row_poster-btn opacity-0 flex items-center justify-center absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                            <div className='row_poster-btn opacity-0 flex items-center justify-center absolute z-10 top-[36%] left-1/2 -translate-x-1/2 -translate-y-1/2'>
                                 <Link
                                     onMouseEnter={()=>handleHover(i)}
                                     to={'/'}
@@ -104,14 +113,14 @@ function Row(props) {
                             </div>
                             <div 
                                 onMouseEnter={()=>handleHover(i)}
-                                className='row_poster-name absolute opacity-0 bottom-1 left-1 font-bold text-base text-white'>
+                                className='row_poster-name absolute opacity-0 bottom-[4.25rem] left-2 font-bold text-base text-white'>
                                 <h1>{film?.name}</h1>
                             </div>
                         </div>
                 ))
             }
             
-        </div>
+        </Slider>
     </div>
   )
 }

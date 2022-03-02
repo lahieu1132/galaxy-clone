@@ -125,6 +125,7 @@
 .row_poster:hover .row_poster-btn{
     opacity: 1;
 }
+
 .row_poster-btn{
     transition: all 1s ;
 }

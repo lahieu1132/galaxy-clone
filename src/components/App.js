@@ -1,3 +1,4 @@
+
 import React from 'react'
 import '../index.css'
 import SignUp from './SignUp'
@@ -12,6 +13,8 @@ import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import PlayFilm from './pages/PlayFilm'
 import {ListsProvider} from '../contexts/ListsContext'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
  
