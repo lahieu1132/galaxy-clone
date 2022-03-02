@@ -119,8 +119,8 @@ function Row(props) {
                         </div>
                 ))
             }
+        {/* {hello} */}
 
-            
         </Slider>
     </div>
   )
