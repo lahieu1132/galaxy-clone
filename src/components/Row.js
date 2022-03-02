@@ -119,6 +119,7 @@ function Row(props) {
                         </div>
                 ))
             }
+
             
         </Slider>
     </div>
