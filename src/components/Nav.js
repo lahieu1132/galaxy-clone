@@ -63,7 +63,7 @@ function Nav(props) {
                 <Link to='/'>
                     <img className='h-[70px] py-[10px]' src='https://assets.glxplay.io/web/images/logoglx.svg' alt=''/>    
                 </Link>
-                <ul className='lg:flex lg:items-center'>
+                <ul className='flex items-center'>
                     {
                         navbar?.map((link,i) => (
                             <NavLink activeclassname='active' to={link.path} key={link.title} 
